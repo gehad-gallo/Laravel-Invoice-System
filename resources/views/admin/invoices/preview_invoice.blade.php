@@ -6,7 +6,17 @@
         <!-- Content -->
         
           <div class="container-xxl flex-grow-1 container-p-y">
-            
+
+            @if(Session::has('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
+            @if(Session::has('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ Session::get('error') }}
+                </div>
+            @endif  
             
 
 <div class="row invoice-preview">
@@ -108,11 +118,13 @@
         <button class="btn btn-label-primary d-grid w-100 mb-2">
           <a href="{{route('pdf.invoice',$order->id)}}" target="_blank">Download</a> 
         </button>
-        <a class="btn btn-label-secondary d-grid w-100 mb-2" target="_blank" href="app-invoice-print.html">
-          Print
-        </a>
-        <a href="app-invoice-edit.html" class="btn btn-label-secondary d-grid w-100 mb-2">
+       
+        <a href="{{route('edit.invoice',$order->id)}}" class="btn btn-label-secondary d-grid w-100 mb-2">
           Edit Invoice
+        </a>
+        
+        <a href="{{route('delete.invoice',$order->id)}}" class="btn btn-label-secondary d-grid w-100 mb-2" onclick="return confirm('Are you sure you want to delete this invoice?');">
+          Delete Invoice
         </a>
         
       </div>
@@ -129,23 +141,24 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body pt-0 flex-grow-1">
-    <form>
+    <form action="{{route('send.email',$order->id)}}" method="post">
+      @csrf
       <div class="mb-3">
         <label for="invoice-from" class="form-label">From</label>
-        <input type="text" class="form-control" id="invoice-from" value="" placeholder="company@email.com" />
+        <input type="text" class="form-control" id="invoice-from" name="emailFrom" value="invoice_system@email.com" placeholder="invoice_system@email.com" disabled />
       </div>
       <div class="mb-3">
         <label for="invoice-to" class="form-label">To</label>
-        <input type="text" class="form-control" id="invoice-to" value="" placeholder="company@email.com" />
+        <input type="email" class="form-control" id="invoice-to" name="send_to" placeholder="company@email.com" required />
+        @error('email')
+            <span class="text-danger">{{$message}}</span>
+        @enderror
       </div>
       <div class="mb-3">
         <label for="invoice-subject" class="form-label">Subject</label>
-        <input type="text" class="form-control" id="invoice-subject" value="" />
+        <input type="text" class="form-control" id="invoice-subject" name="subject" placeholder="Order #{{$order->id}}" disabled />
       </div>
-      <div class="mb-3">
-        <label for="invoice-message" class="form-label">Message</label>
-        <textarea class="form-control" name="invoice-message" id="invoice-message" cols="3" rows="8"></textarea>
-      </div>
+      
       <div class="mb-4">
         <span class="badge bg-label-primary">
           <i class="ti ti-link ti-xs"></i>
@@ -153,7 +166,7 @@
         </span>
       </div>
       <div class="mb-3 d-flex flex-wrap">
-        <button type="button" class="btn btn-primary me-3" data-bs-dismiss="offcanvas">Send</button>
+        <button type="submit" class="btn btn-primary me-3" data-bs-dismiss="offcanvas">Send</button>
         <button type="button" class="btn btn-label-secondary" data-bs-dismiss="offcanvas">Cancel</button>
       </div>
     </form>

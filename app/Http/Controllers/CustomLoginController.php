@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+
 class CustomLoginController extends Controller
 {
 	use AuthenticatesUsers;
@@ -36,7 +37,7 @@ class CustomLoginController extends Controller
 
            	return redirect()->route('dashboard');
         }
-        return back()->withInput($request->only('email'));
+        return back()->withInput($request->only('email'))->with('error', 'Email or password is wrong');;
     }
 
 

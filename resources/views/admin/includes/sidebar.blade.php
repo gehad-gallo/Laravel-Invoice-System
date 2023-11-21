@@ -55,6 +55,11 @@
           <a href="{{route('add.invoice')}}" class="menu-link">
             <div data-i18n="Create Invoice">Create Invoice</div>
           </a>
+        </li> 
+        <li class="menu-item">
+          <a href="{{route('stocking')}}" class="menu-link">
+            <div data-i18n="Stocking">Stocking</div>
+          </a>
         </li>
       </ul>
     </li>
@@ -70,7 +75,7 @@
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons ti ti-users"></i>
         <div data-i18n="Employees">Employees</div>
-        <div class="badge bg-label-primary rounded-pill ms-auto">6</div>
+        <div class="badge bg-label-primary rounded-pill ms-auto"></div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
@@ -78,21 +83,8 @@
             <div data-i18n="Sales Persons">Sales Persons</div>
           </a>
         </li>
-        <li class="menu-item">
-          <a href="cards-advance.html" class="menu-link">
-            <div data-i18n="Support Persons">Support Persons</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="cards-statistics.html" class="menu-link">
-            <div data-i18n="Operation offeciers">Operation offeciers</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="cards-analytics.html" class="menu-link">
-            <div data-i18n="Deleviery persons">Deleviery persons</div>
-          </a>
-        </li>
+        
+  
         
       </ul>
     </li>

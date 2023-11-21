@@ -9,7 +9,7 @@
           <div class="container-xxl flex-grow-1 container-p-y">
             <br><br>
             
-<h4 class="fw-semibold mb-4">{{__('clients.all_clients')}}</h4>
+<h4 class="fw-semibold mb-4">All trashed Clients</h4>
 
 @if(Session::has('success'))
                 <div class="alert alert-success" role="alert">
@@ -27,16 +27,21 @@
 <!-- Permission Table -->
 <div class="card">
   <div class="card-datatable table-responsive">
+       
+
+
+
 
     <table class="table ClientsTable datatables-users table border-top"> 
       <a href="{{route('add.client')}}" style="float: right;" >
 
         <button type="button" class="btn btn-secondary float-start">{{__('clients.add_new_client')}}</button>
       </a> &#160
-      <a href="{{route('client.trash')}}" style="float: right;" role="button" aria-disabled="true">
+      <a href="#" style="float: right;" role="button" aria-disabled="true">
        <button type="button" class="btn btn-secondary float-start">Trash</button>
      </a>
-@if(isset($message))
+
+           @if(isset($message))
 
 <figure class="text-center">
   <blockquote class="blockquote"><br>
@@ -44,40 +49,42 @@
   </blockquote>
 </figure>
 
-@else          
+@else       
       <thead>
         <tr>
           <th>{{__('clients.company_name')}}</th>                
           <th>{{__('clients.phone')}}</th>           
-          <th>With Sales Person :</th>           
-          <th>{{__('clients.oprations')}}</th>              
+          <th>With Sales :</th>           
+          <th>Action</th>           
+                      
         </tr>
       </thead>
 
       <tbody>
-        @isset($all_clients)
-        @foreach($all_clients as $client)
+
+ 
+        @isset($all_trashed_clients)
+
+        @foreach($all_trashed_clients as $client)
             <tr>
                 <td>{{$client -> company_name}}</td>
                 <td>{{$client -> phone}}</td>
                 <td>{{$client -> salesPerson->name}}</td>                    
-              
                 <td>
-
-                      <a href="{{route('edit.client',$client->id)}}" class="btn btn-label-primary me-3" >{{__('clients.Edit')}}</a>
- 
-                      <a href="{{route('delete.client',$client->id)}}" id="{{$client -> id}}" class="btn btn-label-secondary delete">{{__('clients.Delete')}}</a>
-                    
-                </td>               
+                  <a href="{{route('activate.client',$client->id)}}" class="btn btn-label-primary me-3" >activate again!</a>
+                </td>                                          
             </tr>
         @endforeach
         @endisset
                                            
       </tbody>
     </table>
+
+
+
    <div>
     
-{!! $all_clients->links() !!}
+{!! $all_trashed_clients->links() !!}
   </div>
 @endif
   </div>

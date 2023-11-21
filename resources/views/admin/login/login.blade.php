@@ -92,6 +92,19 @@
           <h4 class="mb-1 pt-2">Welcome to PIXY! 👋</h4><br>
           <form id="formAuthentication" class="mb-3" action="{{route('admin.login.access')}}" method="POST">
             @csrf
+
+
+            @if(Session::has('success'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('success') }}
+            </div>
+            @endif
+            @if(Session::has('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ Session::get('error') }}
+                </div>
+            @endif
+
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
               <input type="text" class="form-control" id="email" name="email" placeholder="Enter your Email" autofocus> 

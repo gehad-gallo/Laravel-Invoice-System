@@ -52,10 +52,12 @@ td, th {
 </head>
 <body style="border-style: inset, width: 90%;">
 <div class="content">
+  <br><br>
+<div> 
+  <h5>Pixi</h5>
+</div><br>
 
-  <h1>Pixi</h1>
-
-<div class="clearfix">
+<div class="clearfix">  
   <div class="left">Office 102, Ninth Street</div>
   <div class="right">INVOICE #{{$order->id}}</div>
 </div> 

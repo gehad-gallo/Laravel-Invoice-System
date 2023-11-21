@@ -19,7 +19,8 @@ class CreateSalesPersonsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('phone')->unique();            
+            $table->string('phone')->unique();
+            $table->boolean('is_active')->default(1);            
             $table->string('api_token')->null();
 
         });

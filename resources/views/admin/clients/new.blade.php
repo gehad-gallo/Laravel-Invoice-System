@@ -29,29 +29,11 @@
 
 
           <div class="col-md-6">
-            <label class="form-label" >{{__('clients.company_name')}}</label>
-            <input type="text" placeholder="....." class="form-control" name="company_name" />
+            <input type="text" placeholder="Company phone" class="form-control" name="company_name" />
           </div>
           <div class="col-md-6">
-            <label class="form-label" >{{__('clients.client_phone')}}</label>
-            <input class="form-control" placeholder="....." type="text" name="phone" />
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">{{__('clients.client_address')}}</label>
-            <input class="form-control" placeholder="....." type="text" name="address"  />
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">{{__('clients.client_whatsapp')}}</label>
-            <input class="form-control" placeholder="....." type="text" name="whatsapp" />
-          </div>
-
-
-
-          <div class="col-md-6">
-            <label class="form-label">{{__('clients.personal_connect')}}</label>
-            <input class="form-control" placeholder="....." type="text" name="contact_personal" />
+            
+            <input class="form-control" placeholder="Phone" type="text" name="phone" />
           </div>
 
           

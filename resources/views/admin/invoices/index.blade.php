@@ -12,7 +12,7 @@
                         
                         
             <h4 class="fw-bold py-3 mb-4">
-              <span class="text-muted fw-light">Invoice /</span> List
+              <span class="text-muted fw-light">All </span>Invoices
             </h4>
 
             @if(Session::has('success'))
@@ -44,7 +44,7 @@
                 @foreach($all_orders as $order)
                     <tr>
                         <td></td>
-                        <td><a href="{{route('perview.invoice',$order->id)}}"> # {{$order -> id}}</a></td></td>
+                        <td><a href="{{route('perview.invoice',$order->id)}}"> #{{$order -> id}}</a></td></td>
                         <td>{{$order -> hisClient -> company_name}}</td>
                         <td>{{$order -> salesPerson -> name}}</td>
                         <td>{{$order -> date}}</td>              
@@ -54,10 +54,11 @@
                 @endisset
                                                    
               </tbody>
+              
                 </table>
               </div>
             </div>
-
+{!! $all_orders->links() !!}
 
             
           </div>

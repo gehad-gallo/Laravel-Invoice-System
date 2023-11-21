@@ -21,8 +21,8 @@ class CreateOrdersTable extends Migration
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
             // foreign key
-            $table->foreign('sales_id')->references('id')->on('sales_persons');
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->foreign('sales_id')->references('id')->on('sales_persons')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
         });
     }
 

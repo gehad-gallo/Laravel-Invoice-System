@@ -17,10 +17,7 @@ class CreateClientsTable extends Migration
             $table->id();
             $table->string('company_name');
             $table->string('phone'); 
-            $table->string('whatsapp'); 
-            $table->string('address'); 
-            $table->string('contact_personal'); 
-            $table->string('attach_file'); 
+            $table->boolean('is_active')->default(1); 
             $table->string('api_token')->null();            
             $table->unsignedBigInteger('sales_id'); 
 

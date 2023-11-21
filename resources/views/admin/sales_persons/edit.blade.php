@@ -10,7 +10,7 @@
           <div class="container-xxl flex-grow-1 container-p-y">
             
             
-<h4 class="fw-semibold mb-4">Add Sales person</h4>
+<h4 class="fw-semibold mb-4">Edit Sales person</h4>
 
 
  <div class="col-12">

@@ -8,7 +8,7 @@
 
         
           <div class="container-xxl flex-grow-1 container-p-y">
-            
+            <br><br>
             
 <h4 class="fw-semibold mb-4">{{__('sales_person.all_persons')}}</h4>
       
@@ -24,18 +24,46 @@
         @endif
 
 
-<div class="content-body"> <a href="{{route('add.new.sales.person')}}" class="btn btn-secondary btn-lg float-right" role="button" aria-disabled="true">{{__('sales_person.add_new')}}</a>
-               </div><br>
-
 <!-- Permission Table -->
 <div class="card">
   <div class="card-datatable table-responsive">
     <table class="table salesTable datatables-users table border-top">
+      <a href="{{route('add.new.sales.person')}}" style="float: right;" >
+
+        <button type="button" class="btn btn-secondary float-start">Add new Sales person</button>
+      </a> &#160
+      <a href="{{route('sales.trash')}}" style="float: right;" role="button" aria-disabled="true">
+       <button type="button" class="btn btn-secondary float-start">Trash</button>
+     </a>
+
+@if(isset($message))
+
+<figure class="text-center">
+  <blockquote class="blockquote"><br>
+     <p>{{ $message }}</p>
+  </blockquote>
+</figure>
+
+@else         
       <thead>
         <tr>
           <th>{{__('sales_person.name')}}</th>                
-          <th>{{__('sales_person.email')}}</th>                
-          <th>{{__('sales_person.phone')}}</th>               
+          <th></th>                
+          <th></th> 
+          <th></th>                
+          <th></th>  
+          <th></th>                
+          <th></th> 
+          <th></th>                
+          <th></th>  
+          <th></th>                
+          <th></th> 
+          <th></th>                
+          <th></th>
+          <th></th>                
+          <th></th> 
+          <th></th>                
+          <th></th>               
           <th>{{__('sales_person.oprations')}}</th>              
         </tr>
       </thead>
@@ -44,19 +72,29 @@
         @isset($all_sales_persons)
         @foreach($all_sales_persons as $sales)
             <tr>
-                <td>{{$sales -> name}}</td>
-                <td>{{$sales -> email}}</td>              
-                <td>{{$sales -> phone}}</td>              
+                <td><a href="{{route('perview.sales.person',$sales->id)}}">{{$sales -> name}}</a></td>
+                <td></td>              
+                <td></td>  
+                <td></td>              
+                <td></td> 
+                <td></td>              
+                <td></td>  
+                <td></td>              
+                <td></td>    
+                <td></td>              
+                <td></td>  
+                <td></td>              
+                <td></td>    
+                <td></td>              
+                <td></td>  
+                <td></td>              
+                <td></td>              
                 <td>
-                  <div class="d-flex flex-column text-start text-lg-end">
-                    <div class="d-flex order-sm-0 order-1 mt-3">
-                      
 
                       <a href="{{route('edit.sales',$sales->id)}}" class="btn btn-label-primary me-3" >{{__('sales_person.Edit')}}</a>
  
-                      <a href="{{route('delete.sales.person',$sales->id)}}" id="{{$sales -> id}}" class="btn btn-label-secondary delete">{{__('sales_person.Delete')}}</a>
-                    </div>
-                  </div>
+                      <a href="{{route('delete.sales',$sales->id)}}" id="{{$sales -> id}}" class="btn btn-label-secondary delete">{{__('sales_person.Delete')}}</a>
+                   
                 </td>               
             </tr>
         @endforeach
@@ -65,32 +103,16 @@
       </tbody>
     </table>
   </div>
+
+{!! $all_sales_persons->links() !!}
+  </div>
+@endif
+  </div>
 </div>
-  @stop
+@stop
+
+
 @section('scripts')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script>
-   
-        $(document).on('click', '.delete', function (e) {
-          e.preventDefault();
-            var id =  $(this).attr('id');
-            if(confirm("are you sure to delete this Sales Person?"))
-            {
-              $.ajax({
-                url:"{{route('delete.sales.person')}}",
-                method: "get",
-                data:{id:id},
-                success:function(data){
-                  location.reload();
-                  alert(data);
-                  $('#salesTable').DataTable().ajax.reload();
-                }
-              })
-            }
-
-        });
-
-
-  </script>
-
+ 
   @stop

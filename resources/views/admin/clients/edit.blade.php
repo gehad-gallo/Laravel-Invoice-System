@@ -36,27 +36,13 @@
             <input class="form-control" value="{{$client->phone}}" type="text" name="phone" />
           </div>
 
-          <div class="col-md-6">
-            <label class="form-label">{{__('clients.client_address')}}</label>
-            <input class="form-control" value="{{$client->address}}" type="text" name="address"  />
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">{{__('clients.client_whatsapp')}}</label>
-            <input class="form-control" value="{{$client->whatsapp}}" type="text" name="whatsapp" />
-          </div>
-
-
-
-          <div class="col-md-6">
-            <label class="form-label">{{__('clients.personal_connect')}}</label>
-            <input class="form-control" value="{{$client->contact_personal}}" type="text" name="contact_personal" />
-          </div>
+         
 
           
           <div class="col-md-6">
             <label class="form-label" for="formValidationSelect2">With sales</label>
             <select id="formValidationSelect2" name="sales_id" class="form-select select2" data-allow-clear="true">
+              <option value="$client->sales_id;" selected>{{ $client->salesPerson->name; }}</option>
               @if(isset($sales_persons) && $sales_persons -> count() > 0)
               @foreach($sales_persons as $sales)
                 <option value="{{$sales -> id}}">{{$sales -> name}}</option>

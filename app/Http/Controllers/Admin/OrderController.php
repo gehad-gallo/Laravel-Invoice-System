@@ -8,7 +8,7 @@ use App\Models\Client;
 
 class OrderController extends Controller
 {
-    public function orderForm(){
+   /* public function orderForm(){
     	$clients = Client::get();
     	return view('admin.orders.index',compact('clients'));
     }
@@ -35,5 +35,5 @@ class OrderController extends Controller
 
         return redirect()->route('all.clients')->with('success', 'Client created successfully!');
 
-    }
+    }*/
 }
